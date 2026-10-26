@@ -42,8 +42,7 @@ export const About = () => {
       <RightColumn>
         <AboutCard>
          <AboutImage 
-            // src={profileImage} 
-            // alt="Vanesa Romeo" 
+src="public/WhatsApp Image 2026-10-26 at 09.56.55.jpeg" alt="Foto de perfil" 
           />
          <BadgesExperienceContainer>
        <Badge>SIN EXPERIENCIA</Badge>

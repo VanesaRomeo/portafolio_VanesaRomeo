@@ -11,24 +11,36 @@ export const NavbarWrapper = styled.header`
   position: ${(props) => (props.$scrolled ? 'fixed' : 'relative')};
   top: ${(props) => (props.$scrolled ? '16px' : '0')};
   left: 0;
-  padding-top: ${(props) => (props.$scrolled ? '0' : '20px')};
+  padding: ${(props) => (props.$scrolled ? '0 16px' : '20px 16px 0 16px')};
+  box-sizing: border-box;
 `;
 
 export const FloatingNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 150%;
+  width: 100%;
   max-width: 1000px;
   padding: 10px 24px;
-  border-radius: 40px;
+  border-radius: ${(props) => (props.$isOpen ? '24px' : '40px')};
   transition: all 0.3s ease-in-out;
+  position: relative;
 
-  background-color: ${(props) => (props.$scrolled ? 'rgba(255, 255, 255, 0.85)' : 'transparent')};
-  backdrop-filter: ${(props) => (props.$scrolled ? 'blur(12px)' : 'none')};
-  -webkit-backdrop-filter: ${(props) => (props.$scrolled ? 'blur(12px)' : 'none')};
-  border: ${(props) => (props.$scrolled ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid transparent')};
-  box-shadow: ${(props) => (props.$scrolled ? '0 8px 32px rgba(0, 0, 0, 0.08)' : 'none')};
+  background-color: ${(props) =>
+    props.$scrolled || props.$isOpen ? 'rgba(255, 255, 255, 0.92)' : 'transparent'};
+  backdrop-filter: ${(props) => (props.$scrolled || props.$isOpen ? 'blur(12px)' : 'none')};
+  -webkit-backdrop-filter: ${(props) => (props.$scrolled || props.$isOpen ? 'blur(12px)' : 'none')};
+  border: ${(props) =>
+    props.$scrolled || props.$isOpen
+      ? '1px solid rgba(255, 255, 255, 0.5)'
+      : '1px solid transparent'};
+  box-shadow: ${(props) =>
+    props.$scrolled || props.$isOpen ? '0 8px 32px rgba(0, 0, 0, 0.08)' : 'none'};
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
 `;
 
 export const BrandContainer = styled.a`
@@ -45,10 +57,38 @@ export const BrandName = styled.span`
   font-size: 0.95rem;
 `;
 
+// Botón Ícono Hamburguesa
+export const MenuIconButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 4px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+// Contenedor de enlaces adaptado a desplegable en móvil
 export const NavLinksContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
+    flex-direction: column;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    gap: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    margin-top: 10px;
+  }
 `;
 
 export const NavMenu = styled.ul`
@@ -58,9 +98,19 @@ export const NavMenu = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
 `;
 
-export const NavItem = styled.li``;
+export const NavItem = styled.li`
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
 
 export const NavLinkStyled = styled.a`
   text-decoration: none;
@@ -72,6 +122,11 @@ export const NavLinkStyled = styled.a`
 
   &:hover {
     color: #1a1a1a;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    display: block;
   }
 `;
 
@@ -88,5 +143,12 @@ export const ContactButton = styled.a`
 
   &:hover {
     opacity: 0.85;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 18px;
   }
 `;
