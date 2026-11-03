@@ -74,9 +74,8 @@ Estos proyectos me permitieron adquirir practica en la creacion de nterfaces web
               <Badge>HTML5</Badge>
               <Badge>CSS3</Badge>
               <Badge>JavaScript</Badge>
-               <Badge>React</Badge>
+               <Badge translate="no">React</Badge>
               <Badge>Java</Badge>
-              <Badge>Python</Badge>
               <Badge>NetBeans64</Badge>
               <Badge>GitBash</Badge>
               <Badge>GitHub</Badge>
